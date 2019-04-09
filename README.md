@@ -1,2 +1,2 @@
 # Unix-command-for-genomics 
-This is for Digital biology course at Texas A&M University
+This is for Digital Biology course at Texas A&M University
