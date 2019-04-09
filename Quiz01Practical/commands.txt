@@ -1,0 +1,16 @@
+I remove .gtf file outside the repository and in /scratch/user/tangxt/DBiology
+
+Command:
+1.
+wget ftp://ftp.ensembl.org/pub/release-91/gtf/felis_catus/Felis_catus.Felis_catus_8.0.91.chr.gtf.gz
+
+gunzip Felis_catus.Felis_catus_8.0.91.chr.gtf.gz
+
+2.
+grep "^F2" Felis_catus.Felis_catus_8.0.91.chr.gtf | grep -v "exon"
+
+3.
+grep -i “gene” Felis_catus.Felis_catus_8.0.91.chr.gtf  | awk {'print $3’} | od “quiz”
+
+4.
+grep -i “gene” Felis_catus.Felis_catus_8.0.91.chr.gtf  | awk {'print $3’} | od “quiz” | sed 's/\[\|\]//g'  > PracticalAnswer.txt

@@ -1,0 +1,11 @@
+#!/bin/bash
+# 24script.sh
+function numberthings {
+    i=1
+    f="Test"
+    for f in $@;do
+	echo $i: $f
+	((i+=1))
+    done
+}
+numberthings $(dir)

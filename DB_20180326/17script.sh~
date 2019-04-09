@@ -1,0 +1,3 @@
+#!/bin/bash
+# 17script.sh
+while read i; do echo "$d: $i";done < 17script.txt

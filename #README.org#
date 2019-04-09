@@ -1,0 +1,21 @@
+# #+TITLE: Digital Biology
+#+AUTHOR: tangt
+#+EMAIL: tangxt@tamu.edu
+#+STARTUP: align
+*Digital Biology
+** Topic01
+** Topic02
+** Topic03
+  | Column 1 | Notes            |                 |   |   |
+  |----------+------------------+-----------------+---+---|
+  | Row 1    | <2018-04-06 Fri> | Added this file |   |   |
+  |          |                  |                 |   |   |
+  |----------+------------------+-----------------+---+---|
+
+|                  |   |   |   |   |
+|                  |   |   |   |   |
+| <2018-04-06 Fri> |   |   |   |   |
+基因组学
+*** Items1
+*** Items2
+*** Item

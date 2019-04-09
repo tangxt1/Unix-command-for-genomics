@@ -1,0 +1,11 @@
+File Edit Options Buffers Tools Org Tbl Help                                                                          
+# #+TITLE: Digital Biology
+#+AUTHOR: tangt
+#+EMAIL: tangxt@tamu.edu
+#+STARTUP: align
+*Digital Biology 
+#+CAPTION: This is the caption for the next table
+#+NAME:table1
+| Name | Class | test |
+|      |       |      |
+

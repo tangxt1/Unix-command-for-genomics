@@ -1,0 +1,13 @@
+#!/bin/bash
+# 22script.sh
+a="catxcase y in
+q)
+
+;;
+
+"
+case $a in
+    cat)       echo "Feline";;
+    dog|puppy) echo "Canine";;
+    *)         echo "No Match";;
+    esac

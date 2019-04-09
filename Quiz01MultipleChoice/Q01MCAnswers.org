@@ -1,0 +1,11 @@
+# #+TITLE: Digital Biology
+#+AUTHOR: tangxt
+#+EMAIL: tangxt@tamu.edu
+#+STARTUP: align
+Q1:D
+Q2:C
+Q3:B
+Q4:B
+Q5:AB
+Q6:F
+

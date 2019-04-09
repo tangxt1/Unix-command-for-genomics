@@ -1,0 +1,8 @@
+#!/bin/bash
+# 15script.sh
+# Lexical comparison
+a=""
+b="cat"
+[[ -z $a && -n $b ]]
+echo $?
+

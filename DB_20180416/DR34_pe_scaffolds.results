@@ -1,0 +1,52 @@
+
+---------------- Information for assembly '/scratch/group/digibio/assemblies/DR34_pe_scaffolds.fasta' ----------------
+
+
+                                         Number of scaffolds      10593
+                                     Total size of scaffolds   12890941
+                                            Longest scaffold      50580
+                                           Shortest scaffold        128
+                                 Number of scaffolds > 1K nt       3098  29.2%
+                                Number of scaffolds > 10K nt        118   1.1%
+                               Number of scaffolds > 100K nt          0   0.0%
+                                 Number of scaffolds > 1M nt          0   0.0%
+                                Number of scaffolds > 10M nt          0   0.0%
+                                          Mean scaffold size       1217
+                                        Median scaffold size        483
+                                         N50 scaffold length       3089
+                                          L50 scaffold count       1015
+                                                 scaffold %A      32.08
+                                                 scaffold %C      17.44
+                                                 scaffold %G      17.46
+                                                 scaffold %T      32.97
+                                                 scaffold %N       0.05
+                                         scaffold %non-ACGTN       0.00
+                             Number of scaffold non-ACGTN nt          0
+
+                Percentage of assembly in scaffolded contigs       3.3%
+              Percentage of assembly in unscaffolded contigs      96.7%
+                      Average number of contigs per scaffold        1.0
+Average length of break (>25 Ns) between contigs in scaffold         98
+
+                                           Number of contigs      10654
+                              Number of contigs in scaffolds        113
+                          Number of contigs not in scaffolds      10541
+                                       Total size of contigs   12884923
+                                              Longest contig      34621
+                                             Shortest contig        128
+                                   Number of contigs > 1K nt       3159  29.7%
+                                  Number of contigs > 10K nt        111   1.0%
+                                 Number of contigs > 100K nt          0   0.0%
+                                   Number of contigs > 1M nt          0   0.0%
+                                  Number of contigs > 10M nt          0   0.0%
+                                            Mean contig size       1209
+                                          Median contig size        486
+                                           N50 contig length       3005
+                                            L50 contig count       1051
+                                                   contig %A      32.09
+                                                   contig %C      17.45
+                                                   contig %G      17.47
+                                                   contig %T      32.98
+                                                   contig %N       0.00
+                                           contig %non-ACGTN       0.00
+                               Number of contig non-ACGTN nt          0

@@ -1,0 +1,88 @@
+#BSUB -L /bin/bash              # uses the bash login shell to initialize the job's execution environment.
+#BSUB -J busco                  # job name
+#BSUB -n 10                     # assigns 10 cores for execution
+#BSUB -R "span[ptile=10]"       # assigns 10 cores per node
+#BSUB -R "rusage[mem=2500]"     # reserves 1000MB memory per core
+#BSUB -M 2500                   # sets to 1000MB per process enforceable memory limit. Total memory = (M * n)
+#BSUB -W 24:00                  # sets to 24 hours the job's runtime wall-clock limit.
+#BSUB -o /scratch/user/tangxt/DBiology/DB1813_20180416.data/BuscoRun02.stdout.%J              # directs the job's standard output to stdout.jobid
+#BSUB -e /scratch/user/tangxt/DBiology/DB1813_20180416.data/BuscoRun02.stderr.%J              # directs the job's standard error to stderr.jobid
+
+module load BUSCO/1.1b1-intel-2015B-Python-3.4.3
+
+<<README
+    - BUSCO manual: http://buscos.ezlab.org/files/BUSCO_userguide.pdf
+    - Homepage: http://busco.ezlab.org/
+README
+################################################################################
+# TODO Edit these variables as needed:
+threads=10                      # make sure this is <= your BSUB -n value
+genome_file='/scratch/group/digibio/assemblies/DR34_pe_mp2kb_scaffolds.fasta'
+busco_lineage='/scratch/datasets/BUSCO/fungi'   # arthropoda  bacteria  eukaryota  fungi  metazoa  vertebrata
+busco_mode='all'                # 'all'(genome assembly), 'OGS' (gene set / proteome) and 'trans' (transcriptome)
+
+# --species:  see available species here: /software/easybuild/software/AUGUSTUS/3.1-intel-2015B-Python-3.4.3/config/species/
+augustus_species='candida_albican'    # chlamydomonas (chlorella & chlamy2011 do not work)
+output_prefix="out_busco_run02_${augustus_species}"
+
+################################################################################
+# copy augustus config to home directory so you can write to the copy in your home directory
+if [ ! -d "$TMPDIR/my_augustus_config/config" ]; then
+  echo "Copying AUGUSTUS config directories to $TMPDIR/my_augustus_config"
+  mkdir $TMPDIR/my_augustus_config
+  rsync -rp $EBROOTAUGUSTUS/ $TMPDIR/my_augustus_config
+fi
+export AUGUSTUS_CONFIG_PATH="$TMPDIR/my_augustus_config/config"
+
+# run BUSCO
+python $EBROOTBUSCO/BUSCO_v1.1b1.py -in $genome_file --mode $busco_mode --species $augustus_species --cpu $threads --lineage $busco_lineage -o $output_prefix -f
+
+<<CITATION
+    - Acknowledge TAMU HPRC: https://hprc.tamu.edu/research/citations.html
+
+    - BUSCO:
+        BUSCO: assessing genome assembly and annotation completeness with single-copy orthologs.
+        Felipe A. Simão, Robert M. Waterhouse, Panagiotis Ioannidis, Evgenia V. Kriventseva, and Evgeny M. Zdobnov
+        Bioinformatics, published online June 9, 2015 | doi: 10.1093/bioinformatics/btv351
+CITATION
+
+<<USAGE
+usage: BUSCO_v1.0.py -in [SEQUENCE_FILE] -l [LINEAGE] -o [OUTPUT_NAME] [OTHER OPTIONS]
+
+Welcome to the Benchmarking set of Universal Single Copy Orthologs (BUSCO).
+For further usage information, please check the README file provided with this
+distrubution.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -g FASTA FILE, --genome FASTA FILE, -in FASTA FILE
+                        Input file in fasta format. Can be a genome, proteome
+                        or transcriptome. Default analysis is run on the
+                        genome mode, for other files please specify the mode
+                        with (-m [MODE])
+  -c N, --cpu N         Number of threads/cores to use.
+  -a output, --abrev output, -o output
+                        How to name output and temporary files.
+  --ev N, -e N, -ev N   E-value cutoff for BLAST searches. (Default: 0.01)
+  -m mode, --mode mode  which module to run the analysis to run, valid modes
+                        are 'all'(genome assembly), 'OGS' (gene set /
+                        proteome) and 'Trans' (transcriptome). Defaults to
+                        'all'
+  -l lineage, --clade lineage, --lineage lineage
+                        Which BUSCO lineage to be used.
+  -f                    Force rewrting of existing files. Must be used when
+                        output files with the provided name already exist.
+  -sp species, --species species
+                        Name of existing Augustus species gene finding
+                        metaparameters. (Default: generic)
+  -flank flanks, --flank flanks, -F flanks
+                        Flanking sequence size for candidate regions. If not
+                        provided, flank size is calculated based on genome
+                        size with a range from 5 to 20 Kbp.
+  -Z dbsize, --size dbsize
+                        HMM library total size (Z). Important if using
+                        external datasets
+  --long                Optimization mode Augustus self-training (Default:
+                        Off) adds ~20h extra run time, but can improve results
+                        for some non-model organisms
+USAGE
